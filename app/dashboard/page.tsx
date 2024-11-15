@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Youtube, ThumbsUp, ThumbsDown, Plus, Music2, Loader2 } from 'lucide-react'
+import { Youtube, ThumbsUp, ThumbsDown, Plus, Loader2 } from 'lucide-react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import Image from 'next/image'
 
 interface Song {
   id: string
@@ -119,7 +120,7 @@ export default function FuturisticSongVotingPlatform() {
                         transition={{ duration: 0.3, delay: index * 0.1 }}
                         className="flex items-center space-x-4 mb-4 bg-gray-800 p-3 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-750 transition-all duration-300"
                       >
-                        <img src={song.thumbnail} alt={song.title} className="w-16 h-16 rounded-md object-cover" />
+                        <Image src={song.thumbnail} alt={song.title} className="w-16 h-16 rounded-md object-cover" />
                         <div className="flex-grow">
                           <h3 className="font-medium text-lg text-blue-300">{song.title}</h3>
                           <p className="text-sm text-gray-400">Votes: {song.votes}</p>
