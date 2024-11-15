@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
       },
     });
   } 
-  //@typescript-eslint/no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
   catch (e) {
     return NextResponse.json(
       {
