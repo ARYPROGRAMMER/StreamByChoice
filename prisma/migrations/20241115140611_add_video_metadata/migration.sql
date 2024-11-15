@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Stream" ADD COLUMN     "largeImg" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "smallImg" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "title" TEXT NOT NULL DEFAULT '';
