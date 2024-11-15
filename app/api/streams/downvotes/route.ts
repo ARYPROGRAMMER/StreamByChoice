@@ -43,7 +43,9 @@ export async function POST(req: NextRequest) {
         },
       },
     });
-  } catch (e) {
+  } 
+  //@typescript-eslint/no-unused-vars
+  catch (e) {
     return NextResponse.json(
       {
         message: "Error while downvoting",

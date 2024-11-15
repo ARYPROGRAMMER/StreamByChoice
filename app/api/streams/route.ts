@@ -2,7 +2,7 @@ import { prismaClient } from "@/app/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-//@ts-ignore
+//@ts-expect-error
 import youtubesearchapi from "youtube-search-api";
 
 const YT_REGEX = new RegExp(
@@ -58,7 +58,9 @@ export async function POST(req: NextRequest) {
         status: 200,
       }
     );
-  } catch (e) {
+  } 
+  //@typescript-eslint/no-unused-vars
+  catch (e) {
     return NextResponse.json(
       { message: "ERROR WHILE ADDING DATA" },
       { status: 400 }
