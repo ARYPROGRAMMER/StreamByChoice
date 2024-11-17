@@ -20,6 +20,7 @@ interface Song {
 const REFRESH_INTERVAL_MS = 10 * 1000;
 
 export default function FuturisticSongVotingPlatform() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentVideo, setCurrentVideo] = useState<string>('dQw4w9WgXcQ')
   const [queue, setQueue] = useState<Song[]>([
     { id: 'dQw4w9WgXcQ', title: 'Never Gonna Give You Up', votes: 5, thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/default.jpg' },
@@ -61,6 +62,7 @@ export default function FuturisticSongVotingPlatform() {
 
   useEffect(() => {
     refreshStreams();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const interval = setInterval(()=>{
       refreshStreams();
     }, REFRESH_INTERVAL_MS);
