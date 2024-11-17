@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from 'next/image'
+import axios from 'axios'
 
 interface Song {
   id: string
@@ -15,6 +16,8 @@ interface Song {
   votes: number
   thumbnail: string
 }
+
+const REFRESH_INTERVAL_MS = 10 * 1000;
 
 export default function FuturisticSongVotingPlatform() {
   const [currentVideo, setCurrentVideo] = useState<string>('dQw4w9WgXcQ')
@@ -49,15 +52,22 @@ export default function FuturisticSongVotingPlatform() {
     setIsLoading(false)
   }
 
+  async function refreshStreams(){
+    const res = await axios.get('/api/streams/my',{
+      withCredentials: true
+    });
+    console.log(res);
+  }
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (queue.length > 0) {
-        setCurrentVideo(queue[0].id)
-        setQueue(queue.slice(1))
-      }
-    }, 30000) // Change song every 30 seconds for demo purposes
-    return () => clearInterval(interval)
-  }, [queue])
+    refreshStreams();
+    const interval = setInterval(()=>{
+      refreshStreams();
+    }, REFRESH_INTERVAL_MS);
+  }, [])
+
+
+
 
   return (
     <div className="min-h-screen bg-black text-white p-8 overflow-hidden">

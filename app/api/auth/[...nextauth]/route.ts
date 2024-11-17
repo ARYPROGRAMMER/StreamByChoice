@@ -12,6 +12,7 @@ const handler = NextAuth({
 
     ],
 
+    secret: process.env.NEXTAUTH_SECRET?? "secret",
     callbacks: {
         async signIn(params){
             if (!params.user.email) {
